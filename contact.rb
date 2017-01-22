@@ -27,13 +27,13 @@ class Contact
   # Search for a contact using attributes other than id
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
-  def self.find_by(attribute, value)
+  def self.find_by(variable, value)
     @@contacts.each do |contact|
-      return contact if contact.send(attribute) == value
+      return contact if contact.send(variable) == value
     end
   end
 
-  # This method should delete all of the contacts
+  # Delete all of the contacts
   def self.delete_all
     puts "WARNING: This will delete all of your contacts permanently. This action cannot be undone. Type 'delete' to confirm this action."
     response = gets.chomp
@@ -46,7 +46,7 @@ class Contact
   end
 
 
-  # This method should initialize the contact's attributes
+  # Initialize the contact's attributes
   def initialize(first_name, last_name, email, note)
     @first_name = first_name
     @last_name = last_name
@@ -65,15 +65,14 @@ class Contact
   # 1. which of the contact's attributes you want to update
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
-  def update
-
+  def update(variable, new_value)
+    self.send("#{variable}=", new_value)
   end
 
 
-  # This method should delete the contact
-  # HINT: Check the Array class docs for built-in methods that might be useful here
+  # Delete the contact
   def delete
-
+    @@contacts.delete(self)
   end
 
   # Feel free to add other methods here, if you need them.
@@ -82,6 +81,6 @@ end
 
 
 # TEST
-jose = Contact.create("Jose", "Bautista", "joeybats19@fake.email", "Flippin' bats for your pleasure!")
-edwin = Contact.create("Edwin", "Encarnacion", "edwin@fake.email", "Walking the parrot...in Cleveland")
+jose = Contact.create("Jose", "Bautista", "joeybats19@fake.email", "Flippin' bats for your playoff enjoyment!")
+edwin = Contact.create("Edwin", "Encarnacion", "edwin@fake.email", "Walking the parrot...in Cleveland. So sad. :\(")
 pillar = Contact.create("Kevin", "Pillar", "kevin.pillar@fake.email", "He can catch anything!")
