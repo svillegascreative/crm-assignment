@@ -25,8 +25,6 @@ class Contact
   end
 
   # Search for a contact using attributes other than id
-  # by specifying both the name of the attribute and the value
-  # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
   def self.find_by(variable, value)
     @@contacts.each do |contact|
       return contact if contact.send(variable) == value
@@ -68,7 +66,6 @@ class Contact
   def update(variable, new_value)
     self.send("#{variable}=", new_value)
   end
-
 
   # Delete the contact
   def delete
