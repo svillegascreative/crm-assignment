@@ -32,7 +32,9 @@ class CRM
     when 3 then delete_contact
     when 4 then display_all_contacts
     when 5 then search_by_attribute
-    when 6 then # figure out
+    # when 6 then ...figure out
+    else
+      puts "Invalid selection."
     end
   end
 
@@ -52,8 +54,19 @@ class CRM
     Contact.create(first_name, last_name, email, note)
   end
 
+  # TODO:
   def modify_existing_contact
+    print "Enter contact ID number: "
+    contact_id = gets.to_i
+    # contact_to_modify = Contact.find(contact_id)
 
+    print "Enter attribute to be changed: "
+    attribute = gets.chomp
+
+    print "Enter new value: "
+    new_value = gets.chomp
+
+    # contact_to_modify.update(attribute, new_value)
   end
 
   def delete_contact
@@ -61,7 +74,9 @@ class CRM
   end
 
   def display_all_contacts
-
+    Contact.all.each do |contact|
+      puts "#{contact.id}: #{contact.full_name}, #{contact.email}, #{contact.note}"
+    end
   end
 
   def search_by_attribute
