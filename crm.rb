@@ -72,7 +72,14 @@ class CRM
   end
 
   def delete_contact
+    print "Enter contact ID number: "
+    contact_id = gets.to_i
+    contact_to_delete = Contact.find(contact_id)
 
+    puts "You are deleting #{contact_to_delete.full_name}. Type 'delete' to confirm deletion."
+    response = gets.chomp
+
+    contact_to_delete if response == "delete"
   end
 
   def display_all_contacts
