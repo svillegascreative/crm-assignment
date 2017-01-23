@@ -89,7 +89,14 @@ class CRM
   end
 
   def search_by_attribute
+    puts "Enter search attribute: "
+    search_attribute = gets.chomp
 
+    puts "Enter value for the search: "
+    search_value = gets.chomp
+    contact_found = Contact.find_by(search_attribute, search_value)
+
+    puts "Your search returned: #{contact_found.full_name}"
   end
 
 
