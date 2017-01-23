@@ -33,14 +33,14 @@ class Contact
 
   # Delete all of the contacts
   def self.delete_all
-    puts "WARNING: This will delete all of your contacts permanently. This action cannot be undone. Type 'delete' to confirm this action."
-    response = gets.chomp
-    if response == "delete"
+    # puts "WARNING: This will delete all of your contacts permanently. This action cannot be undone. Type 'delete' to confirm this action."
+    # response = gets.chomp
+    # if response == "delete"
       @@contacts = []
-      puts "Your contact list is now empty."
-    else
-      puts "Your contacts have not been deleted."
-    end
+    #   puts "Your contact list is now empty."
+    # else
+    #   puts "Your contacts have not been deleted."
+    # end
   end
 
 

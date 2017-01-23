@@ -1,3 +1,4 @@
+require "pry"
 require_relative "contact"
 
 class CRM
@@ -54,11 +55,12 @@ class CRM
     Contact.create(first_name, last_name, email, note)
   end
 
-  # TODO:
   def modify_existing_contact
     print "Enter contact ID number: "
     contact_id = gets.to_i
-    # contact_to_modify = Contact.find(contact_id)
+    contact_to_modify = Contact.find(contact_id)
+
+    puts "You are modifying #{contact_to_modify.full_name}"
 
     print "Enter attribute to be changed: "
     attribute = gets.chomp
@@ -66,7 +68,7 @@ class CRM
     print "Enter new value: "
     new_value = gets.chomp
 
-    # contact_to_modify.update(attribute, new_value)
+    contact_to_modify.update(attribute, new_value)
   end
 
   def delete_contact
@@ -85,3 +87,6 @@ class CRM
 
 
 end
+
+book = CRM.new
+book.main_menu
