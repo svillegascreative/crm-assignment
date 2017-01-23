@@ -17,6 +17,7 @@ class CRM
 
   def print_main_menu
     puts "MAIN MENU"
+    puts "[0] View a contact's details"
     puts "[1] Add a new contact"
     puts "[2] Modify an existing contact"
     puts "[3] Delete a contact"
@@ -28,6 +29,7 @@ class CRM
 
   def call_option(user_selected)
     case user_selected
+    when 0 then view_details
     when 1 then add_new_contact
     when 2 then modify_existing_contact
     when 3 then delete_contact
@@ -84,7 +86,7 @@ class CRM
 
   def display_all_contacts
     Contact.all.each do |contact|
-      puts "#{contact.id}: #{contact.full_name}, #{contact.email}, #{contact.note}"
+      puts "\##{contact.id}: #{contact.full_name}"
     end
   end
 
@@ -99,6 +101,21 @@ class CRM
     puts "Your search returned: #{contact_found.full_name}"
   end
 
+  def view_details
+    print "Enter contact ID number: "
+    contact_id = gets.to_i
+
+    print_details(contact_id)
+  end
+
+  def print_details(print_id)
+    view_contact = Contact.find(print_id)
+    puts "--- CONTACT \# #{view_contact.id} ----------------"
+    view_contact.details.each do |attribute, value|
+      puts "#{attribute}: #{value}"
+    end
+    puts "----------------------------------"
+  end
 
 end
 

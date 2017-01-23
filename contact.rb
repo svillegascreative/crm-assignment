@@ -1,3 +1,5 @@
+require "pry"
+
 class Contact
   attr_reader :id
   attr_accessor :first_name, :last_name, :email, :note
@@ -59,9 +61,8 @@ class Contact
     full_name = "#{first_name} #{last_name}"
   end
 
-  # This method should allow you to specify
-  # 1. which of the contact's attributes you want to update
-  # 2. the new value for that attribute
+  # Get the contact's attribute you want to update
+  # and the new value for that attribute
   # and then make the appropriate change to the contact
   def update(variable, new_value)
     self.send("#{variable}=", new_value)
@@ -72,7 +73,10 @@ class Contact
     @@contacts.delete(self)
   end
 
-  # Feel free to add other methods here, if you need them.
+  # Return details of one contact
+  def details
+      contact_details = {"Full Name" => full_name, "Email" => email, "Note" => note}
+  end
 
 end
 
@@ -80,4 +84,6 @@ end
 # TEST
 jose = Contact.create("Jose", "Bautista", "joeybats19@fake.email", "Flippin' bats for your playoff enjoyment!")
 edwin = Contact.create("Edwin", "Encarnacion", "edwin@fake.email", "Walking the parrot...in Cleveland. So sad. :\(")
-pillar = Contact.create("Kevin", "Pillar", "kevin.pillar@fake.email", "He can catch anything!")
+pillar = Contact.create("Kevin", "Pillar", "kevin.pillar@fake.email", "Catch all the things!")
+
+# puts jose.details
