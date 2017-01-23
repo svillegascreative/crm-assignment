@@ -79,7 +79,7 @@ class CRM
     puts "You are deleting #{contact_to_delete.full_name}. Type 'delete' to confirm deletion."
     response = gets.chomp
 
-    contact_to_delete if response == "delete"
+    contact_to_delete.delete if response == "delete"
   end
 
   def display_all_contacts
